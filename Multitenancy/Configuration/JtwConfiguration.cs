@@ -17,9 +17,9 @@ namespace Multitenancy.Configuration
                         ValidIssuer = authentication["Issuer"],
                         ValidAudience = authentication["Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authentication["Secret"])),
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ValidateLifetime = false
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true
                     };
                 });
 

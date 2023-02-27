@@ -33,7 +33,7 @@ namespace Multitenancy.Configuration
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSecrets["Secret"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(issuer: tokenSecrets["Issuer"], audience: tokenSecrets["Audience"], claims: claimsToken,
-                            expires: new DateTime(2024, 01, 01), signingCredentials: credentials);
+                            expires: DateTime.Now.AddMinutes(60), signingCredentials: credentials);
             var tokenHandler = new JwtSecurityTokenHandler();
             var stringToken = tokenHandler.WriteToken(token);
 
